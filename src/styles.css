@@ -168,14 +168,10 @@
   .orbit-border-button:not(.no-orbit) { position:relative; isolation:isolate; }
   .orbit-border-button:not(.no-orbit)::before { content:""; position:absolute; inset:-2px; z-index:-1; pointer-events:none; border-radius:inherit; padding:2px; background:conic-gradient(from var(--orbit-angle),transparent 0 58%,var(--color-ivory) 68%,var(--color-primary) 77%,transparent 88%); -webkit-mask:linear-gradient(var(--color-foreground) 0 0) content-box,linear-gradient(var(--color-foreground) 0 0); -webkit-mask-composite:xor; mask-composite:exclude; animation:orbit-border-spin 2.8s linear infinite; }
   .orbit-border-button:not(.no-orbit):hover::before { animation-duration:1.15s; }
-  .letter-swing-line { display:block; }
-  .letter-swing-word { display:inline-block; white-space:nowrap; margin-right:.22em; }
-  .letter-swing-word:last-child { margin-right:0; }
-  .letter-swing-char { display:inline-block; transform-origin:50% 8%; animation:letter-swing-in .72s cubic-bezier(.22,1,.36,1) both; }
-  .letter-swing-word:nth-child(2n) .letter-swing-char { animation-delay:.045s; }
-  .letter-swing-word:nth-child(3n) .letter-swing-char { animation-delay:.09s; }
-  .letter-swing-word:nth-child(4n) .letter-swing-char { animation-delay:.135s; }
-  .letter-swing:hover .letter-swing-char { transform:translateY(-.035em) rotate(-1.25deg); transition:transform .35s cubic-bezier(.22,1,.36,1); }
+  .cascade-line { display:block; }
+  .cascade-word { display:inline-block; white-space:nowrap; margin-right:.22em; }
+  .cascade-word:last-child { margin-right:0; }
+  .cascade-char { display:inline-block; animation:cascade-fall .9s cubic-bezier(.19,.86,.26,1) both; will-change:transform,opacity,filter; }
   .footer-title { font-size: .7rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary); }
   .section { padding: 6rem 1.25rem; max-width: 80rem; margin-inline: auto; }
   .section.bg-secondary { max-width: none; }
@@ -260,5 +256,5 @@
 @keyframes orbit { to{transform:rotate(360deg)} }
 @property --orbit-angle { syntax:"<angle>"; initial-value:0deg; inherits:false; }
 @keyframes orbit-border-spin { to { --orbit-angle:360deg; } }
-@keyframes letter-swing-in { 0% { opacity:0; transform:translateY(.45em) rotate(7deg); } 55% { opacity:1; transform:translateY(-.06em) rotate(-2deg); } 100% { opacity:1; transform:none; } }
+@keyframes cascade-fall { 0% { opacity:0; transform:translateY(-1.2em); filter:blur(7px); } 42% { opacity:1; filter:blur(0); } 76% { transform:translateY(.055em); } 100% { opacity:1; transform:none; filter:blur(0); } }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .reveal{opacity:1;transform:none;} .home-hero-video{display:none;} }

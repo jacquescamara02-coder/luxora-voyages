@@ -151,9 +151,13 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
   return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
 }
 
-export function LetterSwing({ as: Tag = "h2", text, className = "", accent }: { as?: "h1" | "h2" | "h3"; text: string; className?: string; accent?: string }) {
-  const renderLine = (line: string, isAccent = false) => <span className={`letter-swing-line ${isAccent ? "text-primary" : ""}`}>{line.split(" ").map((word, wordIndex) => <span className="letter-swing-word" key={`${word}-${wordIndex}`}>{Array.from(word).map((character, characterIndex) => <span className="letter-swing-char" key={`${character}-${characterIndex}`} aria-hidden="true">{character}</span>)}</span>)}</span>;
-  return <Tag className={`letter-swing ${className}`} aria-label={accent ? `${text} ${accent}` : text}>{renderLine(text)}{accent && renderLine(accent, true)}</Tag>;
+export function CascadeTitle({ as: Tag = "h2", text, className = "", accent }: { as?: "h1" | "h2" | "h3"; text: string; className?: string; accent?: string }) {
+  const renderLine = (line: string, isAccent = false, startIndex = 0) => {
+    let charIndex = startIndex;
+    return <span className={`cascade-line ${isAccent ? "text-primary" : ""}`}>{line.split(" ").map((word, wordIndex) => <span className="cascade-word" key={`${word}-${wordIndex}`}>{Array.from(word).map((character) => { const delay = charIndex++; return <span className="cascade-char" key={`${character}-${delay}`} aria-hidden="true" style={{ animationDelay: `${delay * 42}ms` }}>{character}</span>; })}</span>)}</span>;
+  };
+  const baseCount = Array.from(text).filter((character) => character !== " ").length;
+  return <Tag className={`cascade-title ${className}`} aria-label={accent ? `${text} ${accent}` : text}>{renderLine(text)}{accent && renderLine(accent, true, baseCount)}</Tag>;
 }
 
 export function PageHero({ eyebrow, title, intro, motif = "flight" }: { eyebrow: string; title: string; intro: string; motif?: string }) {
