@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LetterSwing, Reveal } from "@/components/luxora";
+import { CascadeTitle, Reveal } from "@/components/luxora";
 import dakarArtwork from "@/assets/carnet-dakar.webp.asset.json";
 import zanzibarArtwork from "@/assets/carnet-zanzibar.webp.asset.json";
 
@@ -54,7 +54,7 @@ export function TravelStories() {
       <div className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
         <Reveal>
           <p className="eyebrow">Carnets Luxora</p>
-          <LetterSwing text="Des voyages vécus. Des histoires à raconter." className="mt-4 scroll-mt-28 max-w-3xl font-display text-4xl leading-tight sm:text-5xl lg:text-6xl" />
+          <CascadeTitle text="Des voyages vécus. Des histoires à raconter." className="mt-4 scroll-mt-28 max-w-3xl font-display text-4xl leading-tight sm:text-5xl lg:text-6xl" />
           <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">Un témoignage confié par une voyageuse, et un aperçu de la façon dont nous composons un carnet de voyage personnel.</p>
         </Reveal>
 
