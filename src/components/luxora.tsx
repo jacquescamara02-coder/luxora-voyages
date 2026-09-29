@@ -116,7 +116,8 @@ export function InquiryForm({ kind = "travel_quote", compact = false }: { kind?:
   const [error, setError] = useState("");
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setStatus("sending"); setError("");
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const payload: InquiryInput = {
       inquiryType: kind,
       fullName: String(form.get("fullName") || ""), email: String(form.get("email") || ""), phone: String(form.get("phone") || ""),
@@ -126,7 +127,7 @@ export function InquiryForm({ kind = "travel_quote", compact = false }: { kind?:
       activities: String(form.get("activities") || ""), occasion: String(form.get("occasion") || ""), frequency: String(form.get("frequency") || ""),
       message: String(form.get("message") || ""), preferredDate: String(form.get("preferredDate") || ""),
     };
-    try { await submitInquiry({ data: payload }); setStatus("success"); event.currentTarget.reset(); }
+    try { await submitInquiry({ data: payload }); formElement.reset(); setStatus("success"); }
     catch (cause) { setStatus("error"); setError(cause instanceof Error ? cause.message : "Une erreur est survenue."); }
   }
   if (status === "success") return <div className="success-panel"><Check className="h-8 w-8" /><h3 className="font-display text-3xl">Votre demande est bien partie.</h3><p>Notre équipe reviendra vers vous pour imaginer la suite.</p><Button variant="outline" onClick={() => setStatus("idle")}>Nouvelle demande</Button></div>;
