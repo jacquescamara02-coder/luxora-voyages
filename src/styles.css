@@ -171,7 +171,8 @@
   .cascade-line { display:block; }
   .cascade-word { display:inline-block; white-space:nowrap; margin-right:.22em; }
   .cascade-word:last-child { margin-right:0; }
-  .cascade-char { display:inline-block; animation:cascade-fall .9s cubic-bezier(.19,.86,.26,1) both; will-change:transform,opacity,filter; }
+  .cascade-char { display:inline-block; opacity:0; }
+  .cascade-title.is-armed .cascade-char { animation:cascade-fall .9s cubic-bezier(.19,.86,.26,1) both; will-change:transform,opacity,filter; }
   .footer-title { font-size: .7rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary); }
   .section { padding: 6rem 1.25rem; max-width: 80rem; margin-inline: auto; }
   .section.bg-secondary { max-width: none; }
