@@ -54,19 +54,19 @@ export function TravelStories() {
       <div className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
         <Reveal>
           <p className="eyebrow">Carnets Luxora</p>
-          <h2 id="stories-heading" className="mt-4 max-w-3xl font-display text-4xl leading-tight sm:text-5xl lg:text-6xl">Des voyages vécus. Des histoires à raconter.</h2>
+          <h2 id="stories-heading" className="mt-4 scroll-mt-28 max-w-3xl font-display text-4xl leading-tight sm:text-5xl lg:text-6xl">Des voyages vécus. Des histoires à raconter.</h2>
           <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">Un témoignage confié par une voyageuse, et un aperçu de la façon dont nous composons un carnet de voyage personnel.</p>
         </Reveal>
 
-        <div className="mt-10 flex flex-wrap gap-3" role="tablist" aria-label="Choisir un carnet">
+        <div className="mt-10 flex flex-wrap gap-3" role="group" aria-label="Choisir un carnet">
           {stories.map((item) => (
-            <Button key={item.id} id={`story-tab-${item.id}`} type="button" role="tab" aria-selected={selected === item.id} aria-controls="story-panel" variant={selected === item.id ? "primary" : "outline"} onClick={() => setSelected(item.id)}>
+            <Button key={item.id} type="button" aria-pressed={selected === item.id} variant={selected === item.id ? "primary" : "outline"} onClick={() => setSelected(item.id)}>
               <BookOpen className="h-4 w-4" />{item.tab}
             </Button>
           ))}
         </div>
 
-        <div key={story.id} id="story-panel" role="tabpanel" aria-labelledby={`story-tab-${story.id}`} className="story-editorial mt-12">
+        <div key={story.id} className="story-editorial mt-12" aria-live="polite">
           <div className="story-cover">
             <img src={story.image} alt={story.imageAlt} loading="lazy" width={1024} height={1536} />
             <p>{story.imageCaption}</p>
