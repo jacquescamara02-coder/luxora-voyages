@@ -11,3 +11,4 @@
 - [x] Illustrer les quatre services de la section Notre savoir-faire
 - [x] Ajouter un retour professionnel aux pages intérieures
 - [x] Présenter les deux carnets sur le site : témoignage anonymisé à Dakar et exemple de carnet Zanzibar–Tanzanie, sans détails privés
+- [x] Animer les boutons avec une bordure orbitale et les grands titres avec un mouvement lettre par lettre
