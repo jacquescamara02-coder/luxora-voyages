@@ -22,11 +22,59 @@ import { Button } from "@/components/ui/button";
 
 export const whatsappUrl = "https://wa.me/33767707916?text=Bonjour%20Luxora%20Voyages%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet%20de%20voyage.";
 
+export function whatsappServiceUrl(serviceTitle: string) {
+  return `https://wa.me/33767707916?text=${encodeURIComponent(`Bonjour Luxora Voyages, je souhaite en savoir plus sur votre offre « ${serviceTitle} ».`)}`;
+}
+
 export const services = [
-  { title: "Business Travel", text: "Des déplacements professionnels maîtrisés, un interlocuteur dédié.", to: "/business" as const, number: "01" },
-  { title: "Voyages sur mesure", text: "Des itinéraires façonnés autour de votre rythme et de vos envies.", to: "/voyages" as const, number: "02" },
-  { title: "Luxora Signature", text: "Des voyages qui célèbrent les instants qui comptent vraiment.", to: "/voyages" as const, number: "03" },
-  { title: "Expériences", text: "Des activités choisies pour vivre chaque destination autrement.", to: "/experiences" as const, number: "04" },
+  {
+    title: "Business Travel",
+    text: "Des déplacements professionnels maîtrisés, un interlocuteur dédié.",
+    to: "/business" as const,
+    number: "01",
+    details: [
+      "Vols, hôtels et transferts réservés selon vos horaires et votre politique de frais.",
+      "Un interlocuteur dédié joignable avant, pendant et après chaque déplacement.",
+      "Gestion des imprévus : modification, report, surclassement, urgence.",
+      "Suivi budgétaire et facturation centralisée pour votre entreprise.",
+    ],
+  },
+  {
+    title: "Voyages sur mesure",
+    text: "Des itinéraires façonnés autour de votre rythme et de vos envies.",
+    to: "/voyages" as const,
+    number: "02",
+    details: [
+      "Itinéraire construit autour de votre rythme, jamais d'un catalogue.",
+      "Hébergements et adresses rares sélectionnés et testés sur place.",
+      "Transferts privés, guides locaux et réservations coordonnés.",
+      "Carnet de voyage remis avant le départ, ajustable à volonté.",
+    ],
+  },
+  {
+    title: "Luxora Signature",
+    text: "Des voyages qui célèbrent les instants qui comptent vraiment.",
+    to: "/voyages" as const,
+    number: "03",
+    details: [
+      "Lunes de miel, anniversaires, demandes en mariage et célébrations privées.",
+      "Chaque détail pensé comme une attention porteuse d'émotion.",
+      "Coordination sur place le jour J, dans la discrétion.",
+      "Surprises personnalisées préparées en amont avec vous.",
+    ],
+  },
+  {
+    title: "Expériences",
+    text: "Des activités choisies pour vivre chaque destination autrement.",
+    to: "/experiences" as const,
+    number: "04",
+    details: [
+      "Activités privées : mer, nature, gastronomie, culture, bien-être.",
+      "Guides et partenaires exclusifs vérifiés par nos soins.",
+      "Créneaux privatisés pour vivre les lieux hors de la foule.",
+      "Intégration à votre itinéraire sans logistique à gérer.",
+    ],
+  },
 ];
 
 export function Brand({ inverse = false }: { inverse?: boolean }) {
