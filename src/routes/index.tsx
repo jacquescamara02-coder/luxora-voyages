@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, BrandArtwork, Faq, Reveal, SectionHeading, services, TrustStrip } from "@/components/luxora";
 import { Button } from "@/components/ui/button";
+import heroTravelVideo from "@/assets/luxora-hero-travel.webm.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -22,6 +23,17 @@ function Index() {
   return (
     <>
       <section className="home-hero">
+        <video
+          className="home-hero-video"
+          src={heroTravelVideo.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        />
+        <div className="home-hero-video-overlay" aria-hidden />
         <div className="cinema-lines" aria-hidden><i /><i /><i /><i /></div>
         <div className="relative z-10 mx-auto flex min-h-[88svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-32 lg:px-8 lg:pb-20">
           <div className="grid items-end gap-10 lg:grid-cols-[1.15fr_.85fr]">

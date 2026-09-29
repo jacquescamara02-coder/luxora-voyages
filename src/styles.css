@@ -168,9 +168,11 @@
   .section.bg-secondary { max-width: none; }
   .section.bg-secondary > div { padding-inline: 0; }
   .home-hero, .page-hero, .story-band { position: relative; overflow: hidden; background: var(--color-ink); }
-  .home-hero::before, .page-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 72% 44%, color-mix(in oklab, var(--color-lagoon) 28%, transparent), transparent 30%), linear-gradient(118deg, transparent 40%, color-mix(in oklab, var(--color-primary) 18%, transparent)); animation: breathe 9s ease-in-out infinite alternate; }
+  .home-hero-video { position:absolute; inset:0; z-index:0; width:100%; height:100%; object-fit:cover; object-position:center; opacity:.82; filter:saturate(.88) contrast(1.08); }
+  .home-hero-video-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(90deg,color-mix(in oklab,var(--color-ink) 94%,transparent) 0%,color-mix(in oklab,var(--color-ink) 78%,transparent) 43%,color-mix(in oklab,var(--color-ink) 28%,transparent) 78%),linear-gradient(0deg,color-mix(in oklab,var(--color-ink) 86%,transparent) 0%,transparent 53%,color-mix(in oklab,var(--color-ink) 52%,transparent) 100%); }
+  .home-hero::before, .page-hero::before { content: ""; position: absolute; inset: 0; z-index:2; pointer-events:none; background: radial-gradient(circle at 72% 44%, color-mix(in oklab, var(--color-lagoon) 28%, transparent), transparent 30%), linear-gradient(118deg, transparent 40%, color-mix(in oklab, var(--color-primary) 18%, transparent)); animation: breathe 9s ease-in-out infinite alternate; }
   .home-hero::after, .page-hero::after { content: ""; position: absolute; inset: auto -10% -48% 32%; height: 88%; border: 1px solid color-mix(in oklab, var(--color-primary) 45%, transparent); border-radius: 50%; transform: rotate(-12deg); box-shadow: 0 0 0 5rem color-mix(in oklab, var(--color-primary) 3%, transparent), 0 0 0 11rem color-mix(in oklab, var(--color-primary) 3%, transparent); }
-  .cinema-lines { position: absolute; inset: 0; perspective: 900px; opacity: .45; }
+  .cinema-lines { position: absolute; inset: 0; z-index:3; perspective: 900px; opacity: .28; pointer-events:none; }
   .cinema-lines i { position: absolute; left: 45%; top: 10%; width: 1px; height: 120%; background: linear-gradient(var(--color-primary), transparent); transform-origin: top; }
   .cinema-lines i:nth-child(1){transform:rotate(32deg)} .cinema-lines i:nth-child(2){transform:rotate(50deg)} .cinema-lines i:nth-child(3){transform:rotate(68deg)} .cinema-lines i:nth-child(4){transform:rotate(86deg)}
   .brand-artwork { width: min(34rem, 38vw); border: 1px solid color-mix(in oklab, var(--color-primary) 38%, transparent); opacity: .88; box-shadow: 0 30px 90px color-mix(in oklab, var(--color-ink) 70%, transparent); }
@@ -210,4 +212,4 @@
 @media (min-width: 1024px) { .section { padding:8rem 2rem; } }
 @keyframes breathe { from{transform:scale(1)} to{transform:scale(1.08) translate3d(-1%,1%,0)} }
 @keyframes orbit { to{transform:rotate(360deg)} }
-@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .reveal{opacity:1;transform:none;} }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .reveal{opacity:1;transform:none;} .home-hero-video{display:none;} }
