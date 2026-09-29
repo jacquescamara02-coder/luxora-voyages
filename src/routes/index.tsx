@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, BrandArtwork, Faq, Reveal, SectionHeading, services, TrustStrip } from "@/components/luxora";
 import { Button } from "@/components/ui/button";
-import heroTravelVideo from "@/assets/luxora-hero-travel.mp4.asset.json";
+import heroTravelVideo from "@/assets/luxora-hero-travel.webm.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
