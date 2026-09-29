@@ -1,11 +1,13 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, BrandArtwork, Faq, InquiryForm, Reveal, SectionHeading, services, TrustStrip } from "@/components/luxora";
+import { ArrowRight, Check, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { BrandArtwork, Faq, InquiryForm, Reveal, SectionHeading, TrustStrip, services, whatsappServiceUrl } from "@/components/luxora";
 import { Button } from "@/components/ui/button";
 import heroTravelVideo from "@/assets/luxora-hero-travel.webm.asset.json";
 import businessTravelImage from "@/assets/service-business-travel.jpg";
 import bespokeTravelImage from "@/assets/service-voyage-sur-mesure.jpg";
 import signatureImage from "@/assets/service-luxora-signature.jpg";
-import experiencesImage from "@/assets/service-experiences.jpg";
+import experiencesImage from "@/assets/service-experiences-couple.jpg.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
