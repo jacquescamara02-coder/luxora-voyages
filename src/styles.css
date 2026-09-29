@@ -258,4 +258,4 @@
 @property --orbit-angle { syntax:"<angle>"; initial-value:0deg; inherits:false; }
 @keyframes orbit-border-spin { to { --orbit-angle:360deg; } }
 @keyframes cascade-fall { 0% { opacity:0; transform:translateY(-1.2em); filter:blur(7px); } 42% { opacity:1; filter:blur(0); } 76% { transform:translateY(.055em); } 100% { opacity:1; transform:none; filter:blur(0); } }
-@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .reveal{opacity:1;transform:none;} .home-hero-video{display:none;} }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .reveal{opacity:1;transform:none;} .home-hero-video{display:none;} .cascade-title .cascade-char{opacity:1;animation:none;} }
