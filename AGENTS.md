@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- The public site uses five TanStack routes with shared Luxora chrome in `src/components/luxora.tsx`, keeping page structure consistent and route metadata independent.
+- Public inquiry forms write through a validated server function using the privileged database client because anonymous visitors must submit without gaining table read access.
