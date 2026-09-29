@@ -12,3 +12,4 @@
 - The public site uses five TanStack routes with shared Luxora chrome in `src/components/luxora.tsx`, keeping page structure consistent and route metadata independent.
 - Public inquiry forms write through a validated server function using the privileged database client because anonymous visitors must submit without gaining table read access.
 - Travel stories live in a homepage editorial selector, using original carnet artwork and privacy-safe summaries rather than publishing personal itinerary PDFs.
+- Site-wide CTA motion is centralized in the shared Button variant, while major display headings use the reusable LetterSwing component so accessibility and reduced-motion remain consistent.
