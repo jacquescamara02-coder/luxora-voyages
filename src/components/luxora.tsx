@@ -137,7 +137,7 @@ export function FloatingActions() {
   }, []);
   return <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
     {visible && <Button variant="icon" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Retour en haut"><ArrowUp className="h-5 w-5" /></Button>}
-    <Button variant="icon" asChild><a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Contacter Luxora sur WhatsApp"><MessageCircle className="h-5 w-5" /></a></Button>
+    <Button variant="icon" asChild className="bg-whatsapp text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] hover:bg-whatsapp/90"><a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Contacter Luxora sur WhatsApp"><MessageCircle className="h-5 w-5" /></a></Button>
   </div>;
 }
 
