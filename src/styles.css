@@ -64,6 +64,7 @@
   --color-ivory: var(--ivory);
   --color-ink: var(--ink);
   --color-lagoon: var(--lagoon);
+  --color-whatsapp: var(--whatsapp);
   --shadow-luxe: 0 14px 30px color-mix(in oklab, var(--ink) 16%, transparent);
 }
 
