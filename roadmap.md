@@ -7,6 +7,6 @@
 - [x] Tester les formulaires et les affichages mobile/tablette/ordinateur
 - [ ] Remplacer Paris par l’adresse exacte communiquée par le client
 
-- [ ] Ajouter un formulaire sous le héros d’accueil
-- [ ] Illustrer les quatre services de la section Notre savoir-faire
-- [ ] Ajouter un retour professionnel aux pages intérieures
+- [x] Ajouter un formulaire sous le héros d’accueil
+- [x] Illustrer les quatre services de la section Notre savoir-faire
+- [x] Ajouter un retour professionnel aux pages intérieures
