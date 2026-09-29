@@ -152,7 +152,7 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
 }
 
 export function PageHero({ eyebrow, title, intro, motif = "flight" }: { eyebrow: string; title: string; intro: string; motif?: string }) {
-  return <section className={`page-hero motif-${motif}`}><div className="hero-grid" aria-hidden /><div className="relative z-10 mx-auto max-w-7xl px-5 pb-20 pt-32 lg:px-8 lg:pb-28 lg:pt-40"><Button asChild variant="ghost" size="sm" className="hero-back"><Link to="/"><ArrowLeft className="h-4 w-4" />Retour à l’accueil</Link></Button><p className="eyebrow mt-10 text-primary">{eyebrow}</p><h1 className="mt-5 max-w-4xl font-display text-5xl leading-[0.98] text-ivory sm:text-6xl lg:text-8xl">{title}</h1><p className="mt-7 max-w-2xl text-base leading-8 text-ivory/72 sm:text-lg">{intro}</p></div></section>;
+  return <section className={`page-hero motif-${motif}`}><div className="hero-grid" aria-hidden /><div className="relative z-10 mx-auto max-w-7xl px-5 pb-20 pt-32 lg:px-8 lg:pb-28 lg:pt-40"><Button asChild variant="ghost" size="sm" className="hero-back border border-primary/70 bg-ink/40 text-ivory backdrop-blur-sm hover:bg-primary hover:text-primary-foreground"><Link to="/"><ArrowLeft className="h-4 w-4" />Retour à l’accueil</Link></Button><p className="eyebrow mt-10 text-primary">{eyebrow}</p><h1 className="mt-5 max-w-4xl font-display text-5xl leading-[0.98] text-ivory sm:text-6xl lg:text-8xl">{title}</h1><p className="mt-7 max-w-2xl text-base leading-8 text-ivory/72 sm:text-lg">{intro}</p></div></section>;
 }
 
 export function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
