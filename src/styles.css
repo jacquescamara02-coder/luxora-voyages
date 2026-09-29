@@ -211,5 +211,3 @@
 @keyframes breathe { from{transform:scale(1)} to{transform:scale(1.08) translate3d(-1%,1%,0)} }
 @keyframes orbit { to{transform:rotate(360deg)} }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .reveal{opacity:1;transform:none;} }
-  }
-}
