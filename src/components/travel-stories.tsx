@@ -73,7 +73,7 @@ export function TravelStories() {
           </div>
           <div className="story-copy">
             <p className="eyebrow">{story.label}</p>
-            <h3 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">{story.title}</h3>
+            <CascadeTitle as="h3" text={story.title} className="mt-4 font-display text-4xl leading-tight sm:text-5xl" />
             <p className="mt-5 max-w-xl leading-7 text-muted-foreground">{story.intro}</p>
             <ol className="story-moments mt-8">
               {story.moments.map((moment) => (

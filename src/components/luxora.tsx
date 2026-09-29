@@ -152,12 +152,18 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
 }
 
 export function CascadeTitle({ as: Tag = "h2", text, className = "", accent }: { as?: "h1" | "h2" | "h3"; text: string; className?: string; accent?: string }) {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const element = ref.current; if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => { if (entry?.isIntersecting) { element.classList.add("is-armed"); observer.disconnect(); } }, { threshold: 0.15 });
+    observer.observe(element); return () => observer.disconnect();
+  }, []);
   const renderLine = (line: string, isAccent = false, startIndex = 0) => {
     let charIndex = startIndex;
     return <span className={`cascade-line ${isAccent ? "text-primary" : ""}`}>{line.split(" ").map((word, wordIndex) => <span className="cascade-word" key={`${word}-${wordIndex}`}>{Array.from(word).map((character) => { const delay = charIndex++; return <span className="cascade-char" key={`${character}-${delay}`} aria-hidden="true" style={{ animationDelay: `${delay * 42}ms` }}>{character}</span>; })}</span>)}</span>;
   };
   const baseCount = Array.from(text).filter((character) => character !== " ").length;
-  return <Tag className={`cascade-title ${className}`} aria-label={accent ? `${text} ${accent}` : text}>{renderLine(text)}{accent && renderLine(accent, true, baseCount)}</Tag>;
+  return <Tag ref={ref} className={`cascade-title ${className}`} aria-label={accent ? `${text} ${accent}` : text}>{renderLine(text)}{accent && renderLine(accent, true, baseCount)}</Tag>;
 }
 
 export function PageHero({ eyebrow, title, intro, motif = "flight" }: { eyebrow: string; title: string; intro: string; motif?: string }) {
