@@ -151,12 +151,17 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
   return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
 }
 
+export function LetterSwing({ as: Tag = "h2", text, className = "", accent }: { as?: "h1" | "h2" | "h3"; text: string; className?: string; accent?: string }) {
+  const renderLine = (line: string, isAccent = false) => <span className={`letter-swing-line ${isAccent ? "text-primary" : ""}`}>{line.split(" ").map((word, wordIndex) => <span className="letter-swing-word" key={`${word}-${wordIndex}`}>{Array.from(word).map((character, characterIndex) => <span className="letter-swing-char" key={`${character}-${characterIndex}`} aria-hidden="true">{character}</span>)}</span>)}</span>;
+  return <Tag className={`letter-swing ${className}`} aria-label={accent ? `${text} ${accent}` : text}>{renderLine(text)}{accent && renderLine(accent, true)}</Tag>;
+}
+
 export function PageHero({ eyebrow, title, intro, motif = "flight" }: { eyebrow: string; title: string; intro: string; motif?: string }) {
-  return <section className={`page-hero motif-${motif}`}><div className="hero-grid" aria-hidden /><div className="relative z-10 mx-auto max-w-7xl px-5 pb-20 pt-32 lg:px-8 lg:pb-28 lg:pt-40"><Button asChild variant="ghost" size="sm" className="hero-back border border-primary/70 bg-ink/40 text-ivory backdrop-blur-sm hover:bg-primary hover:text-primary-foreground"><Link to="/"><ArrowLeft className="h-4 w-4" />Retour à l’accueil</Link></Button><p className="eyebrow mt-10 text-primary">{eyebrow}</p><h1 className="mt-5 max-w-4xl font-display text-5xl leading-[0.98] text-ivory sm:text-6xl lg:text-8xl">{title}</h1><p className="mt-7 max-w-2xl text-base leading-8 text-ivory/72 sm:text-lg">{intro}</p></div></section>;
+  return <section className={`page-hero motif-${motif}`}><div className="hero-grid" aria-hidden /><div className="relative z-10 mx-auto max-w-7xl px-5 pb-20 pt-32 lg:px-8 lg:pb-28 lg:pt-40"><Button asChild variant="ghost" size="sm" className="hero-back border border-primary/70 bg-ink/40 text-ivory backdrop-blur-sm hover:bg-primary hover:text-primary-foreground"><Link to="/"><ArrowLeft className="h-4 w-4" />Retour à l’accueil</Link></Button><p className="eyebrow mt-10 text-primary">{eyebrow}</p><LetterSwing as="h1" text={title} className="mt-5 max-w-4xl font-display text-5xl leading-[0.98] text-ivory sm:text-6xl lg:text-8xl" /><p className="mt-7 max-w-2xl text-base leading-8 text-ivory/72 sm:text-lg">{intro}</p></div></section>;
 }
 
 export function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
-  return <div className="max-w-3xl"><p className="eyebrow">{eyebrow}</p><h2 className="mt-4 font-display text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl">{title}</h2>{text && <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">{text}</p>}</div>;
+  return <div className="max-w-3xl"><p className="eyebrow">{eyebrow}</p><LetterSwing text={title} className="mt-4 font-display text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl" />{text && <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">{text}</p>}</div>;
 }
 
 type FormKind = "travel_quote" | "business_meeting" | "appointment";
@@ -209,7 +214,7 @@ export function Faq() {
     ["Comment débute un projet de voyage ?", "Par un échange. Nous clarifions vos envies, votre rythme, vos dates et votre budget avant de vous proposer une approche personnalisée."],
   ];
   const [active, setActive] = useState(0);
-  return <div className="divide-y divide-border border-y border-border">{items.map(([question, answer], index) => <div key={question}><Button variant="ghost" className="h-auto w-full justify-between rounded-none px-0 py-6 text-left normal-case tracking-normal" onClick={() => setActive(active === index ? -1 : index)} aria-expanded={active === index}><span className="pr-5 font-display text-xl sm:text-2xl">{question}</span><ChevronDown className={`h-5 w-5 shrink-0 transition-transform ${active === index ? "rotate-180" : ""}`} /></Button>{active === index && <p className="max-w-3xl pb-6 leading-7 text-muted-foreground">{answer}</p>}</div>)}</div>;
+  return <div className="divide-y divide-border border-y border-border">{items.map(([question, answer], index) => <div key={question}><Button variant="ghost" className="no-orbit h-auto w-full justify-between rounded-none px-0 py-6 text-left normal-case tracking-normal" onClick={() => setActive(active === index ? -1 : index)} aria-expanded={active === index}><span className="pr-5 font-display text-xl sm:text-2xl">{question}</span><ChevronDown className={`h-5 w-5 shrink-0 transition-transform ${active === index ? "rotate-180" : ""}`} /></Button>{active === index && <p className="max-w-3xl pb-6 leading-7 text-muted-foreground">{answer}</p>}</div>)}</div>;
 }
 
 export function MapPanel() {
