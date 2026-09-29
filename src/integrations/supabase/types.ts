@@ -14,7 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      inquiries: {
+        Row: {
+          accommodation: string | null
+          activities: string | null
+          budget: string | null
+          company: string | null
+          created_at: string
+          departure_city: string | null
+          destination: string | null
+          email: string
+          frequency: string | null
+          full_name: string
+          id: string
+          inquiry_type: string
+          message: string | null
+          occasion: string | null
+          phone: string | null
+          preferred_date: string | null
+          role_title: string | null
+          travel_dates: string | null
+          travel_type: string | null
+          travelers: string | null
+        }
+        Insert: {
+          accommodation?: string | null
+          activities?: string | null
+          budget?: string | null
+          company?: string | null
+          created_at?: string
+          departure_city?: string | null
+          destination?: string | null
+          email: string
+          frequency?: string | null
+          full_name: string
+          id?: string
+          inquiry_type: string
+          message?: string | null
+          occasion?: string | null
+          phone?: string | null
+          preferred_date?: string | null
+          role_title?: string | null
+          travel_dates?: string | null
+          travel_type?: string | null
+          travelers?: string | null
+        }
+        Update: {
+          accommodation?: string | null
+          activities?: string | null
+          budget?: string | null
+          company?: string | null
+          created_at?: string
+          departure_city?: string | null
+          destination?: string | null
+          email?: string
+          frequency?: string | null
+          full_name?: string
+          id?: string
+          inquiry_type?: string
+          message?: string | null
+          occasion?: string | null
+          phone?: string | null
+          preferred_date?: string | null
+          role_title?: string | null
+          travel_dates?: string | null
+          travel_type?: string | null
+          travelers?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
