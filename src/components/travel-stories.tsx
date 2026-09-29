@@ -9,20 +9,20 @@ import zanzibarArtwork from "@/assets/carnet-zanzibar.webp.asset.json";
 const stories = [
   {
     id: "dakar",
-    tab: "Dakar · Le récit d’Édwige",
+    tab: "Dakar · Un anniversaire surprise",
     label: "Carnet d’émotions · Témoignage client",
     title: "Dakar, le voyage de mes 40 ans",
-    intro: "Édwige pensait partir déjeuner en amoureux. Son mari lui réservait en réalité un anniversaire surprise à Dakar, entièrement orchestré dans le secret.",
+    intro: "Elle pensait partir déjeuner en amoureux. Son mari lui réservait en réalité un anniversaire surprise à Dakar, entièrement orchestré dans le secret.",
     image: dakarArtwork.url,
-    imageAlt: "Illustration du littoral de Dakar issue du carnet d’Édwige",
-    imageCaption: "Dakar · 14–16 juin 2024",
+    imageAlt: "Illustration du littoral de Dakar issue du carnet de voyage",
+    imageCaption: "Dakar · Un anniversaire surprise",
     moments: [
-      { number: "01", title: "Une destination tenue secrète", text: "À l’aéroport d’Abidjan, Édwige découvre qu’elle part pour Dakar. Billets, bagages et séjour avaient été préparés sans qu’elle le sache." },
+      { number: "01", title: "Une destination tenue secrète", text: "À l’aéroport, la voyageuse découvre qu’elle part pour Dakar. Billets, bagages et séjour avaient été préparés sans qu’elle le sache." },
       { number: "02", title: "Une célébration dans les airs", text: "À bord, une annonce du commandant de bord, un gâteau et un toast partagé transforment le vol en premier souvenir inoubliable." },
       { number: "03", title: "La plus belle surprise", text: "À Dakar, après un accueil personnalisé, sa famille la rejoint au dîner. Le lendemain, tous découvrent ensemble la ville et l’île de Gorée." },
     ],
     quote: "C’est plus qu’une agence de voyage : c’est un faiseur de rêve.",
-    attribution: "Édwige · Témoignage transmis par la voyageuse",
+    attribution: "Une voyageuse Luxora · Témoignage transmis par la voyageuse",
     action: "Imaginer une célébration",
   },
   {
