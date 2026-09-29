@@ -63,3 +63,40 @@ function Index() {
     </>
   );
 }
+
+type Service = (typeof services)[number];
+
+function ServiceCard({ service, image }: { service: Service; image: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Reveal className="service-card">
+      <div className="service-card-media"><img src={image} alt={service.title} loading="lazy" width={1280} height={912} /></div>
+      <div className="service-card-body">
+        <span className="text-xs font-bold text-primary">{service.number}</span>
+        <h3 className="mt-8 font-display text-3xl">{service.title}</h3>
+        <p className="mt-3 max-w-sm leading-7 text-muted-foreground">{service.text}</p>
+        <button type="button" className="service-toggle mt-8" aria-expanded={open} aria-controls={`service-details-${service.number}`} onClick={() => setOpen((v) => !v)}>
+          Découvrir <ArrowRight className="h-4 w-4" />
+        </button>
+        <div id={`service-details-${service.number}`} className={`service-details ${open ? "is-open" : ""}`}>
+          <div className="service-details-inner">
+            <div className="service-details-content">
+              <p className="text-sm leading-6 text-foreground/85">Voici ce que comprend votre {service.title.toLowerCase()} avec Luxora :</p>
+              <ul>
+                {service.details.map((detail) => (
+                  <li key={detail}><Check className="h-4 w-4" strokeWidth={2.4} /> {detail}</li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <a className="whatsapp-cta" href={whatsappServiceUrl(service.title)} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" strokeWidth={2.2} /> Réserver sur WhatsApp
+                </a>
+                <Link to={service.to} className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-primary">Voir la page dédiée <ArrowRight className="ml-1 inline h-3.5 w-3.5" /></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
