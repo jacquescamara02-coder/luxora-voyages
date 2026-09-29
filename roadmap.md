@@ -10,3 +10,4 @@
 - [x] Ajouter un formulaire sous le héros d’accueil
 - [x] Illustrer les quatre services de la section Notre savoir-faire
 - [x] Ajouter un retour professionnel aux pages intérieures
+- [x] Présenter les deux carnets sur le site : témoignage anonymisé à Dakar et exemple de carnet Zanzibar–Tanzanie, sans détails privés
