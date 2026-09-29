@@ -64,6 +64,7 @@
   --color-ivory: var(--ivory);
   --color-ink: var(--ink);
   --color-lagoon: var(--lagoon);
+  --color-whatsapp: var(--whatsapp);
   --shadow-luxe: 0 14px 30px color-mix(in oklab, var(--ink) 16%, transparent);
 }
 
@@ -91,6 +92,7 @@
   --ivory: oklch(0.98 0.01 80);
   --ink: oklch(0.14 0.04 258);
   --lagoon: oklch(0.55 0.09 195);
+  --whatsapp: oklch(0.8 0.17 156);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -187,6 +189,19 @@
   .service-card-media img { width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.22,1,.36,1),filter .25s ease; }
   .service-card:hover .service-card-media img { transform:scale(1.035); filter:saturate(1.06); }
   .service-card-body { padding:2rem; }
+  .service-details { display:grid; grid-template-rows:0fr; transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1); }
+  .service-details.is-open { grid-template-rows:1fr; }
+  .service-details-inner { overflow:hidden; }
+  .service-details-content { margin-top:1.5rem; border-top:1px solid var(--color-border); padding-top:1.5rem; }
+  .service-details-content ul { display:flex; flex-direction:column; gap:.65rem; margin-top:1rem; }
+  .service-details-content li { display:flex; gap:.65rem; align-items:flex-start; font-size:.86rem; line-height:1.5; color:var(--color-muted-foreground); }
+  .service-details-content li svg { flex:none; margin-top:.15rem; color:var(--color-primary); }
+  .whatsapp-cta { display:inline-flex; align-items:center; gap:.55rem; cursor:pointer; border-radius:var(--radius-sm); background:var(--color-whatsapp); color:var(--color-ink); padding:.7rem 1.1rem; font-size:.78rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; transition:filter .2s ease, transform .2s ease; }
+  .whatsapp-cta:hover { filter:brightness(.94); transform:translateY(-1px); }
+  .service-toggle { display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.14em; color:var(--color-foreground); background:none; border:none; padding:0; transition:color .2s ease; }
+  .service-toggle:hover { color:var(--color-primary); }
+  .service-toggle svg { transition:transform .3s cubic-bezier(.22,1,.36,1); }
+  .service-toggle[aria-expanded="true"] svg { transform:rotate(90deg); color:var(--color-primary); }
   .icon-card { background: var(--color-background); padding: 2rem; min-height: 11rem; }
   .signature-card { border-top: 1px solid color-mix(in oklab, var(--color-primary) 55%, transparent); padding: 1.75rem 0; }
   .destination-orbit { display:grid; place-items:center; min-height:28rem; }

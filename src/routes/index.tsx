@@ -1,11 +1,13 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, BrandArtwork, Faq, InquiryForm, Reveal, SectionHeading, services, TrustStrip } from "@/components/luxora";
+import { ArrowRight, Check, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { BrandArtwork, Faq, InquiryForm, Reveal, SectionHeading, TrustStrip, services, whatsappServiceUrl } from "@/components/luxora";
 import { Button } from "@/components/ui/button";
 import heroTravelVideo from "@/assets/luxora-hero-travel.webm.asset.json";
 import businessTravelImage from "@/assets/service-business-travel.jpg";
 import bespokeTravelImage from "@/assets/service-voyage-sur-mesure.jpg";
 import signatureImage from "@/assets/service-luxora-signature.jpg";
-import experiencesImage from "@/assets/service-experiences.jpg";
+import experiencesImage from "@/assets/service-experiences-couple.jpg.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/")({
 
 // IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  const serviceImages = [businessTravelImage, bespokeTravelImage, signatureImage, experiencesImage];
+  const serviceImages = [businessTravelImage, bespokeTravelImage, signatureImage, experiencesImage.url];
   return (
     <>
       <section className="home-hero">
@@ -55,9 +57,46 @@ function Index() {
         </div>
       </section>
       <TrustStrip />
-      <section className="section"><Reveal><SectionHeading eyebrow="Notre savoir-faire" title="Un voyage ne se réserve pas. Il se compose." text="Nous réunissons logistique, intuition et sens du détail pour construire une expérience fluide, cohérente et profondément personnelle." /></Reveal><div className="mt-14 grid gap-5 md:grid-cols-2">{services.map((service, index) => <Reveal key={service.number} className="service-card"><div className="service-card-media"><img src={serviceImages[index]} alt={service.title} loading="lazy" width={1280} height={912} /></div><div className="service-card-body"><span className="text-xs font-bold text-primary">{service.number}</span><h3 className="mt-8 font-display text-3xl">{service.title}</h3><p className="mt-3 max-w-sm leading-7 text-muted-foreground">{service.text}</p><Link to={service.to} className="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-foreground">Découvrir <ArrowRight className="h-4 w-4" /></Link></div></Reveal>)}</div></section>
+      <section className="section"><Reveal><SectionHeading eyebrow="Notre savoir-faire" title="Un voyage ne se réserve pas. Il se compose." text="Nous réunissons logistique, intuition et sens du détail pour construire une expérience fluide, cohérente et profondément personnelle." /></Reveal><div className="mt-14 grid gap-5 md:grid-cols-2">{services.map((service, index) => <ServiceCard key={service.number} service={service} image={serviceImages[index]!} />)}</div></section>
       <section className="story-band"><div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-24 lg:grid-cols-2 lg:px-8"><Reveal><p className="eyebrow text-primary">Luxora Signature</p><h2 className="mt-4 font-display text-5xl leading-none text-ivory lg:text-7xl">Les plus beaux souvenirs commencent par une intention.</h2><p className="mt-6 max-w-xl leading-7 text-ivory/68">Lune de miel, anniversaire, escapade romantique ou célébration privée : nous orchestrons chaque attention pour que l’émotion reste.</p><Button asChild variant="outline" className="mt-8"><Link to="/voyages">Créer mon voyage Signature</Link></Button></Reveal><Reveal className="destination-orbit"><div className="orbit-ring"><span>Zanzibar</span><span>Rome</span><span>Paris</span><span>Maroc</span></div><div className="orbit-core">L</div></Reveal></div></section>
       <section className="section"><Reveal><SectionHeading eyebrow="Questions fréquentes" title="Avant de partir" /></Reveal><Reveal className="mt-12"><Faq /></Reveal></section>
     </>
+  );
+}
+
+type Service = (typeof services)[number];
+
+function ServiceCard({ service, image }: { service: Service; image: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Reveal className="service-card">
+      <div className="service-card-media"><img src={image} alt={service.title} loading="lazy" width={1280} height={912} /></div>
+      <div className="service-card-body">
+        <span className="text-xs font-bold text-primary">{service.number}</span>
+        <h3 className="mt-8 font-display text-3xl">{service.title}</h3>
+        <p className="mt-3 max-w-sm leading-7 text-muted-foreground">{service.text}</p>
+        <button type="button" className="service-toggle mt-8" aria-expanded={open} aria-controls={`service-details-${service.number}`} onClick={() => setOpen((v) => !v)}>
+          Découvrir <ArrowRight className="h-4 w-4" />
+        </button>
+        <div id={`service-details-${service.number}`} className={`service-details ${open ? "is-open" : ""}`}>
+          <div className="service-details-inner">
+            <div className="service-details-content">
+              <p className="text-sm leading-6 text-foreground/85">Ce que comprend cette prestation Luxora :</p>
+              <ul>
+                {service.details.map((detail) => (
+                  <li key={detail}><Check className="h-4 w-4" strokeWidth={2.4} /> {detail}</li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <a className="whatsapp-cta" href={whatsappServiceUrl(service.title)} target="_blank" rel="noreferrer">
+                  <MessageCircle className="h-4 w-4" strokeWidth={2.2} /> Réserver sur WhatsApp
+                </a>
+                <Link to={service.to} className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-primary">Voir la page dédiée <ArrowRight className="ml-1 inline h-3.5 w-3.5" /></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Reveal>
   );
 }
