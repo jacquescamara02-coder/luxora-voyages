@@ -81,7 +81,7 @@ function ServiceCard({ service, image }: { service: Service; image: string }) {
         <div id={`service-details-${service.number}`} className={`service-details ${open ? "is-open" : ""}`}>
           <div className="service-details-inner">
             <div className="service-details-content">
-              <p className="text-sm leading-6 text-foreground/85">Voici ce que comprend votre {service.title.toLowerCase()} avec Luxora :</p>
+              <p className="text-sm leading-6 text-foreground/85">Ce que comprend cette prestation Luxora :</p>
               <ul>
                 {service.details.map((detail) => (
                   <li key={detail}><Check className="h-4 w-4" strokeWidth={2.4} /> {detail}</li>
