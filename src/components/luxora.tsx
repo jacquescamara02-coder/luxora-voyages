@@ -7,7 +7,6 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Globe2,
   MapPin,
   Menu,
   MessageCircle,
@@ -15,7 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import brandAsset from "@/assets/luxora-brand.jpeg.asset.json";
+import officialLogoAsset from "@/assets/luxora-logo-officiel.jpeg.asset.json";
 import announcementZanzibar from "@/assets/announcement-zanzibar.jpg";
 import announcementTanzania from "@/assets/announcement-tanzania.jpg";
 import announcementRome from "@/assets/announcement-rome.jpg";
@@ -81,13 +80,10 @@ export const services = [
   },
 ];
 
-export function Brand({ inverse = false }: { inverse?: boolean }) {
+export function Brand({ footer = false }: { footer?: boolean }) {
   return (
-    <Link to="/" className="group flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-      <span className={`grid h-9 w-9 place-items-center rounded-full border ${inverse ? "border-primary text-primary" : "border-primary text-primary"}`}>
-        <Globe2 className="h-5 w-5" strokeWidth={1.35} />
-      </span>
-      <span className={`font-display text-xl uppercase tracking-[0.2em] ${inverse ? "text-ivory" : "text-foreground"}`}>Luxora</span>
+    <Link to="/" className={`brand-logo-link ${footer ? "brand-logo-footer" : "brand-logo-header"}`} aria-label="Luxora Voyages Anyele · Accueil">
+      <img src={officialLogoAsset.url} alt="Luxora Voyages Anyele, votre assistante voyage sur mesure" className="brand-logo-image" />
     </Link>
   );
 }
@@ -101,19 +97,19 @@ export function SiteHeader() {
   ] as const;
   useEffect(() => setOpen(false), [pathname]);
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/90 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
+    <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-primary/30 bg-ink/95 backdrop-blur-xl">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-5 lg:h-28 lg:px-8">
         <Brand />
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Navigation principale">
           {links.map(([to, label]) => <Link key={to} to={to} className={`nav-link ${pathname === to ? "nav-link-active" : ""}`}>{label}</Link>)}
         </nav>
         <div className="hidden lg:block"><Button asChild size="sm"><Link to="/contact">Demander un devis</Link></Button></div>
-        <Button variant="ghost" size="sm" className="px-3 lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}>
+        <Button variant="ghost" size="sm" className="px-3 text-ivory hover:bg-primary hover:text-primary-foreground lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}>
           {open ? <X /> : <Menu />}
         </Button>
       </div>
-      {open && <nav className="border-t border-border bg-background px-5 py-5 lg:hidden" aria-label="Navigation mobile">
-        <div className="mx-auto flex max-w-7xl flex-col">{links.map(([to, label]) => <Link key={to} to={to} className="border-b border-border py-4 font-medium">{label}</Link>)}</div>
+      {open && <nav className="border-t border-primary/25 bg-ink px-5 py-5 text-ivory lg:hidden" aria-label="Navigation mobile">
+        <div className="mx-auto flex max-w-7xl flex-col">{links.map(([to, label]) => <Link key={to} to={to} className="border-b border-ivory/10 py-4 font-medium transition-colors hover:text-primary">{label}</Link>)}</div>
       </nav>}
     </header>
   );
@@ -123,7 +119,7 @@ export function SiteFooter() {
   return (
     <footer className="bg-ink text-ivory">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
-        <div><Brand inverse /><p className="mt-5 max-w-sm text-sm leading-7 text-ivory/65">Agence de voyages, business travel et création d’expériences sur mesure. Votre voyage commence par une écoute attentive.</p></div>
+        <div><Brand footer /><p className="mt-5 max-w-sm text-sm leading-7 text-ivory/65">Agence de voyages, business travel et création d’expériences sur mesure. Votre voyage commence par une écoute attentive.</p></div>
         <div><p className="footer-title">Explorer</p><div className="mt-4 flex flex-col gap-3 text-sm text-ivory/70"><Link to="/business">Business Travel</Link><Link to="/voyages">Voyages & Signature</Link><Link to="/experiences">Expériences</Link></div></div>
         <div><p className="footer-title">Nous contacter</p><a className="mt-4 block text-sm text-ivory/70" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp · +33 7 67 70 79 16</a><p className="mt-3 text-sm text-ivory/50">Sur rendez-vous</p></div>
       </div>
@@ -292,5 +288,4 @@ export function MapPanel() {
   return <div className="map-panel">{src ? <iframe title="Zone de rendez-vous Luxora Voyages" src={src} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> : <div className="grid h-full place-items-center p-8 text-center"><MapPin className="h-8 w-8 text-primary" /><p className="mt-4">Carte disponible après configuration.</p></div>}<div className="map-caption"><MapPin className="h-5 w-5 text-primary" /><div><strong>Luxora Voyages</strong><p>Sur rendez-vous · Adresse à confirmer</p></div></div></div>;
 }
 
-export function BrandArtwork() { return <img src={brandAsset.url} alt="Luxora Voyages Anyele, votre assistante voyage sur mesure" className="brand-artwork" />; }
 export { ArrowRight, Sparkles };

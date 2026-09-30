@@ -162,8 +162,15 @@
 @utility shadow-luxe { box-shadow: var(--shadow-luxe); }
 
 @layer components {
+  .site-header .nav-link { color:color-mix(in oklab,var(--color-ivory) 72%,transparent); }
   .nav-link { font-size: .7rem; font-weight: 700; text-transform: uppercase; color: var(--color-muted-foreground); transition: color .2s ease; }
   .nav-link:hover, .nav-link-active { color: var(--color-primary); }
+  .brand-logo-link { display:block; flex:none; overflow:hidden; border-radius:var(--radius-sm); outline:none; transition:opacity .2s ease,transform .2s cubic-bezier(.22,1,.36,1); }
+  .brand-logo-link:hover { opacity:.94; transform:translateY(-1px); }
+  .brand-logo-link:focus-visible { box-shadow:0 0 0 2px var(--color-primary); }
+  .brand-logo-image { display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+  .brand-logo-header { width:clamp(8.75rem,18vw,13rem); height:4.5rem; }
+  .brand-logo-footer { width:min(16rem,76vw); height:9rem; border:1px solid color-mix(in oklab,var(--color-primary) 24%,transparent); }
   .eyebrow { font-size: .7rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary); }
   .orbit-border-button:not(.no-orbit) { position:relative; isolation:isolate; }
   .orbit-border-button:not(.no-orbit)::before { content:""; position:absolute; inset:-2px; z-index:-1; pointer-events:none; border-radius:inherit; padding:2px; background:conic-gradient(from var(--orbit-angle),transparent 0 58%,var(--color-ivory) 68%,var(--color-primary) 77%,transparent 88%); -webkit-mask:linear-gradient(var(--color-foreground) 0 0) content-box,linear-gradient(var(--color-foreground) 0 0); -webkit-mask-composite:xor; mask-composite:exclude; animation:orbit-border-spin 2.8s linear infinite; }
@@ -185,7 +192,6 @@
   .cinema-lines { position: absolute; inset: 0; z-index:3; perspective: 900px; opacity: .28; pointer-events:none; }
   .cinema-lines i { position: absolute; left: 45%; top: 10%; width: 1px; height: 120%; background: linear-gradient(var(--color-primary), transparent); transform-origin: top; }
   .cinema-lines i:nth-child(1){transform:rotate(32deg)} .cinema-lines i:nth-child(2){transform:rotate(50deg)} .cinema-lines i:nth-child(3){transform:rotate(68deg)} .cinema-lines i:nth-child(4){transform:rotate(86deg)}
-  .brand-artwork { width: min(34rem, 38vw); border: 1px solid color-mix(in oklab, var(--color-primary) 38%, transparent); opacity: .88; box-shadow: 0 30px 90px color-mix(in oklab, var(--color-ink) 70%, transparent); }
   .hero-grid { position:absolute; inset:0; opacity:.18; background-image: linear-gradient(color-mix(in oklab, var(--color-primary) 25%, transparent) 1px, transparent 1px), linear-gradient(90deg,color-mix(in oklab, var(--color-primary) 25%, transparent) 1px,transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to bottom, black, transparent); }
   .hero-back { color:var(--color-ivory); border:1px solid color-mix(in oklab,var(--color-ivory) 28%,transparent); background:color-mix(in oklab,var(--color-ink) 35%,transparent); backdrop-filter:blur(10px); }
   .hero-back:hover { color:var(--color-primary); background:color-mix(in oklab,var(--color-ink) 72%,transparent); }
