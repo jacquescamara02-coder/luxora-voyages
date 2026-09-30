@@ -16,6 +16,11 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import brandAsset from "@/assets/luxora-brand.jpeg.asset.json";
+import announcementZanzibar from "@/assets/announcement-zanzibar.jpg";
+import announcementTanzania from "@/assets/announcement-tanzania.jpg";
+import announcementRome from "@/assets/announcement-rome.jpg";
+import announcementMarrakech from "@/assets/announcement-marrakech.jpg";
+import announcementParis from "@/assets/announcement-paris.jpg";
 import { submitInquiry, type InquiryInput } from "@/lib/inquiries.functions";
 import { Button } from "@/components/ui/button";
 
@@ -212,11 +217,11 @@ function Field({ name, label, type = "text", required = false }: { name: string;
 
 export function TrustStrip() {
   const announcements = [
-    { place: "Zanzibar", title: "Safari bleu privé", text: "Une journée entre lagons, bancs de sable et escales choisies, organisée selon votre séjour." },
-    { place: "Tanzanie", title: "Safari au lever du jour", text: "Une immersion privée dans la savane, pensée pour observer la faune aux premières lumières." },
-    { place: "Rome", title: "Rome à table", text: "Une expérience gastronomique confidentielle pour découvrir la ville par ses saveurs et ses adresses." },
-    { place: "Marrakech", title: "Médina confidentielle", text: "Une découverte guidée des savoir-faire, des ruelles et des lieux préservés de la ville rouge." },
-    { place: "Paris", title: "Dîner privé sur la Seine", text: "Une parenthèse élégante sur l’eau, à vivre seule ou à intégrer à une célébration Luxora." },
+    { slug: "safari-bleu-prive", place: "Zanzibar", title: "Safari bleu privé", text: "Lagons cristallins, banc de sable et navigation privée.", image: announcementZanzibar, alt: "Boutre traditionnel sur un lagon turquoise à Zanzibar" },
+    { slug: "safari-lever-du-jour", place: "Tanzanie", title: "Safari au lever du jour", text: "La savane s’éveille, loin de la foule, aux premières lumières.", image: announcementTanzania, alt: "Safari privé face aux éléphants au lever du soleil en Tanzanie" },
+    { slug: "rome-a-table", place: "Rome", title: "Rome à table", text: "Une table confidentielle pour découvrir Rome par ses saveurs.", image: announcementRome, alt: "Table gastronomique sur une terrasse avec vue sur Rome" },
+    { slug: "medina-confidentielle", place: "Marrakech", title: "Médina confidentielle", text: "Artisans, riads secrets et ruelles préservées de la ville rouge.", image: announcementMarrakech, alt: "Cour intérieure raffinée d’un riad à Marrakech" },
+    { slug: "diner-prive-seine", place: "Paris", title: "Dîner privé sur la Seine", text: "Une soirée élégante sur l’eau face aux lumières de Paris.", image: announcementParis, alt: "Dîner privé sur la Seine avec vue sur la tour Eiffel" },
   ];
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -244,11 +249,16 @@ export function TrustStrip() {
           <span className="announcement-kicker"><span aria-hidden="true" /> Annonces Luxora</span>
           <p>Excursions & expériences</p>
         </div>
-        <div className="announcement-copy" aria-live="polite" aria-atomic="true">
+        <div className="announcement-card" aria-live="polite" aria-atomic="true">
           <div key={active} className="announcement-slide">
+            <div className="announcement-media">
+              <img src={announcement.image} alt={announcement.alt} loading="lazy" width={1280} height={800} />
+            </div>
+            <div className="announcement-copy">
             <p className="announcement-place">{announcement.place}</p>
             <h2>{announcement.title}</h2>
             <p className="announcement-text">{announcement.text}</p>
+            </div>
           </div>
         </div>
         <div className="announcement-actions">
@@ -257,7 +267,7 @@ export function TrustStrip() {
             <span aria-label={`Annonce ${active + 1} sur ${total}`}><strong>{String(active + 1).padStart(2, "0")}</strong> / {String(total).padStart(2, "0")}</span>
             <Button variant="icon" className="announcement-arrow no-orbit" onClick={showNext} aria-label="Annonce suivante"><ChevronRight className="h-4 w-4" /></Button>
           </div>
-          <Button asChild variant="outline" className="announcement-cta"><Link to="/experiences">En savoir plus <ArrowRight className="h-4 w-4" /></Link></Button>
+          <Button asChild variant="outline" className="announcement-cta"><Link to="/experiences" hash={announcement.slug}>En savoir plus <ArrowRight className="h-4 w-4" /></Link></Button>
         </div>
       </div>
       <div className="announcement-progress" aria-hidden="true"><span key={active} /></div>
