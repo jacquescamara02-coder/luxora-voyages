@@ -152,7 +152,7 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
 }
 
 export function CascadeTitle({ as: Tag = "h2", text, className = "", accent }: { as?: "h1" | "h2" | "h3"; text: string; className?: string; accent?: string }) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
     const element = ref.current; if (!element) return;
     const observer = new IntersectionObserver(([entry]) => { if (entry?.isIntersecting) { element.classList.add("is-armed"); observer.disconnect(); } }, { threshold: 0.15 });
