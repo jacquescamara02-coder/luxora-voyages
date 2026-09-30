@@ -86,7 +86,7 @@ function Index() {
       <TrustStrip />
       <section className="section"><Reveal><SectionHeading eyebrow="Notre savoir-faire" title="Un voyage ne se réserve pas. Il se compose." text="Nous réunissons logistique, intuition et sens du détail pour construire une expérience fluide, cohérente et profondément personnelle." /></Reveal><div className="mt-14 grid gap-5 md:grid-cols-2">{services.map((service, index) => <ServiceCard key={service.number} service={service} image={serviceImages[index]!} />)}</div></section>
       <TravelStories />
-      <section className="testimonial-section" aria-labelledby="reviews-title">
+      <section className="testimonial-section" aria-label="Avis clients">
         <div className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
           <Reveal><p className="eyebrow text-primary">Avis client</p><CascadeTitle text="Le voyage continue dans leurs mots." className="mt-4 max-w-3xl font-display text-4xl leading-tight text-ivory sm:text-5xl lg:text-6xl" /><p className="mt-5 max-w-2xl leading-7 text-ivory/70">Un récit authentique confié à Luxora, présenté avec discrétion pour préserver l’intimité de la voyageuse.</p></Reveal>
           <Reveal className="mt-14"><CircularTestimonials testimonials={testimonials} /></Reveal>
