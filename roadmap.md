@@ -14,3 +14,4 @@
 - [x] Animer les boutons avec une bordure orbitale et les grands titres avec un mouvement lettre par lettre
 - [x] Ajouter une section Avis client avec carrousel circulaire, navigation et récit anonymisé
 - [x] Porter le carrousel à sept extraits authentiques avec sept visuels professionnels distincts
+- [x] Remplacer le bandeau de réassurance par des annonces d’excursions lentes, défilantes et actionnables
