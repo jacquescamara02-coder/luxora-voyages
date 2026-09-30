@@ -16,3 +16,4 @@
 - Homepage customer feedback uses the reusable CircularTestimonials carousel with privacy-safe source material, preserving client anonymity and avoiding invented endorsements.
 - The homepage post-booking band is a rotating excursion announcement strip sourced from the existing experiences catalogue, avoiding unsupported prices or availability claims.
 - Excursion announcements and their matching experience cards share the same generated editorial imagery and stable hash anchors, keeping “En savoir plus” visually continuous and directly targeted.
+- The official Luxora logo appears only in the shared header and footer, with a tailored horizontal crop in navigation and no logo artwork inside page heroes.

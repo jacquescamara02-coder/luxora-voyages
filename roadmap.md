@@ -16,3 +16,4 @@
 - [x] Porter le carrousel à sept extraits authentiques avec sept visuels professionnels distincts
 - [x] Remplacer le bandeau de réassurance par des annonces d’excursions lentes, défilantes et actionnables
 - [x] Illustrer chaque annonce défilante et sa fiche détaillée avec un visuel professionnel
+- [x] Installer le logo officiel dans l’en-tête et le pied de page, sans logo dans le héros
