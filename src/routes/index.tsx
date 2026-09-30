@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Check, MessageCircle } from "lucide-react";
 import { useState } from "react";
-import { BrandArtwork, Faq, InquiryForm, CascadeTitle, Reveal, SectionHeading, TrustStrip, services, whatsappServiceUrl } from "@/components/luxora";
+import { Faq, InquiryForm, CascadeTitle, Reveal, SectionHeading, TrustStrip, services, whatsappServiceUrl } from "@/components/luxora";
 import { Button } from "@/components/ui/button";
 import heroTravelVideo from "@/assets/luxora-hero-travel.webm.asset.json";
 import businessTravelImage from "@/assets/service-business-travel.jpg";
@@ -103,10 +103,7 @@ function Index() {
         <div className="home-hero-video-overlay" aria-hidden />
         <div className="cinema-lines" aria-hidden><i /><i /><i /><i /></div>
         <div className="relative z-10 mx-auto flex min-h-[88svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-32 lg:px-8 lg:pb-20">
-          <div className="grid items-end gap-10 lg:grid-cols-[1.15fr_.85fr]">
-            <div><p className="eyebrow text-primary">Agence de voyages · Paris & au-delà</p><CascadeTitle as="h1" text="Le monde," accent="à votre mesure." className="mt-5 max-w-4xl font-display text-6xl leading-[0.9] text-ivory sm:text-7xl lg:text-[7.25rem]" /><p className="mt-7 max-w-xl text-base leading-8 text-ivory/72">Voyages privés, déplacements professionnels et expériences rares, imaginés avec précision par un interlocuteur dédié.</p><Button asChild size="lg" className="mt-8"><Link to="/contact">Imaginer mon voyage <ArrowRight className="h-4 w-4" /></Link></Button></div>
-            <div className="hidden justify-self-end lg:block"><BrandArtwork /></div>
-          </div>
+          <div className="max-w-4xl"><p className="eyebrow text-primary">Agence de voyages · Paris & au-delà</p><CascadeTitle as="h1" text="Le monde," accent="à votre mesure." className="mt-5 max-w-4xl font-display text-6xl leading-[0.9] text-ivory sm:text-7xl lg:text-[7.25rem]" /><p className="mt-7 max-w-xl text-base leading-8 text-ivory/72">Voyages privés, déplacements professionnels et expériences rares, imaginés avec précision par un interlocuteur dédié.</p><Button asChild size="lg" className="mt-8"><Link to="/contact">Imaginer mon voyage <ArrowRight className="h-4 w-4" /></Link></Button></div>
           <div className="mt-14 flex items-center gap-4 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-ivory/55"><span className="h-px w-12 bg-primary" /> Faites défiler pour voyager</div>
         </div>
       </section>
