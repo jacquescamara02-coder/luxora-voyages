@@ -10,8 +10,13 @@ import signatureImage from "@/assets/service-luxora-signature.jpg";
 import experiencesImage from "@/assets/service-experiences-couple.jpg.asset.json";
 import { TravelStories } from "@/components/travel-stories";
 import { CircularTestimonials, type Testimonial } from "@/components/ui/circular-testimonials";
-import dakarArtwork from "@/assets/carnet-dakar.webp.asset.json";
-import zanzibarArtwork from "@/assets/carnet-zanzibar.webp.asset.json";
+import reviewDakarArrival from "@/assets/review-dakar-arrival.jpg";
+import reviewDakarWelcome from "@/assets/review-dakar-welcome.jpg";
+import reviewDakarDinner from "@/assets/review-dakar-dinner.jpg";
+import reviewGoreeCrossing from "@/assets/review-goree-crossing.jpg";
+import reviewZanzibarKayak from "@/assets/review-zanzibar-kayak.jpg";
+import reviewZanzibarRomance from "@/assets/review-zanzibar-romance.jpg";
+import reviewTanzaniaSafari from "@/assets/review-tanzania-safari.jpg";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -35,23 +40,51 @@ function Index() {
     {
       quote: "C’est plus qu’une agence de voyage : c’est un faiseur de rêve.",
       name: "Une voyageuse Luxora",
-      designation: "Anniversaire surprise · Dakar",
-      src: dakarArtwork.url,
-      imageAlt: "Illustration du littoral de Dakar issue du carnet de voyage",
+      designation: "Témoignage authentique · Dakar",
+      src: reviewDakarArrival,
+      imageAlt: "Voyageuse arrivant à Dakar au coucher du soleil",
     },
     {
-      quote: "À l’aéroport, j’ai découvert une destination tenue secrète et un séjour entièrement préparé à mon insu.",
+      quote: "Les billets, les bagages et tout le séjour avaient été préparés dans le plus grand secret.",
       name: "Une voyageuse Luxora",
-      designation: "Souvenir confié à Luxora · Dakar",
-      src: zanzibarArtwork.url,
-      imageAlt: "Illustration d’un carnet de voyage Luxora",
+      designation: "Destination surprise · Dakar",
+      src: reviewDakarWelcome,
+      imageAlt: "Accueil personnalisé dans un hôtel à Dakar",
     },
     {
-      quote: "Le lendemain, nous avons découvert ensemble la ville et l’île de Gorée. Un souvenir que je n’oublierai jamais.",
+      quote: "Je ne m’attendais absolument pas à cela. J’étais sans voix, les larmes aux yeux.",
       name: "Une voyageuse Luxora",
-      designation: "Voyage en famille · Dakar",
-      src: experiencesImage.url,
-      imageAlt: "Expérience en couple sur une eau turquoise",
+      designation: "Anniversaire célébré à bord · Dakar",
+      src: reviewDakarDinner,
+      imageAlt: "Dîner d’anniversaire en famille face à l’océan",
+    },
+    {
+      quote: "Tout avait été préparé pour moi. C’était complètement fou.",
+      name: "Une voyageuse Luxora",
+      designation: "Accueil personnalisé · Dakar",
+      src: reviewGoreeCrossing,
+      imageAlt: "Famille découvrant l’île de Gorée depuis la mer",
+    },
+    {
+      quote: "Mon cœur était rempli de joie et d’amour. Toute ma famille était réunie pour célébrer mes 40 ans.",
+      name: "Une voyageuse Luxora",
+      designation: "Surprise en famille · Dakar",
+      src: reviewZanzibarKayak,
+      imageAlt: "Couple en kayak transparent sur les eaux de Zanzibar",
+    },
+    {
+      quote: "Ce n’était plus seulement un anniversaire : c’était une parenthèse de bonheur partagée avec les personnes que j’aime.",
+      name: "Une voyageuse Luxora",
+      designation: "Souvenir en famille · Dakar & Gorée",
+      src: reviewZanzibarRomance,
+      imageAlt: "Dîner romantique privé sur une plage de Zanzibar",
+    },
+    {
+      quote: "Toute ma vie, je ne pourrai oublier cette date. Mon époux n’aurait jamais pu organiser ce merveilleux week-end sans cet accompagnement.",
+      name: "Une voyageuse Luxora",
+      designation: "Le mot de la fin · Dakar",
+      src: reviewTanzaniaSafari,
+      imageAlt: "Couple observant des éléphants lors d’un safari en Tanzanie",
     },
   ];
   return (
@@ -88,7 +121,7 @@ function Index() {
       <TravelStories />
       <section className="testimonial-section" aria-label="Avis clients">
         <div className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
-          <Reveal><p className="eyebrow text-primary">Avis client</p><CascadeTitle text="Le voyage continue dans leurs mots." className="mt-4 max-w-3xl font-display text-4xl leading-tight text-ivory sm:text-5xl lg:text-6xl" /><p className="mt-5 max-w-2xl leading-7 text-ivory/70">Un récit authentique confié à Luxora, présenté avec discrétion pour préserver l’intimité de la voyageuse.</p></Reveal>
+          <Reveal><p className="eyebrow text-primary">Avis client</p><CascadeTitle text="Le voyage continue dans leurs mots." className="mt-4 max-w-3xl font-display text-4xl leading-tight text-ivory sm:text-5xl lg:text-6xl" /><p className="mt-5 max-w-2xl leading-7 text-ivory/70">Sept instants extraits d’un témoignage authentique confié à Luxora, présentés avec discrétion pour préserver l’intimité de la voyageuse.</p></Reveal>
           <Reveal className="mt-14"><CircularTestimonials testimonials={testimonials} /></Reveal>
         </div>
       </section>

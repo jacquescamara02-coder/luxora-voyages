@@ -13,3 +13,4 @@
 - [x] Présenter les deux carnets sur le site : témoignage anonymisé à Dakar et exemple de carnet Zanzibar–Tanzanie, sans détails privés
 - [x] Animer les boutons avec une bordure orbitale et les grands titres avec un mouvement lettre par lettre
 - [x] Ajouter une section Avis client avec carrousel circulaire, navigation et récit anonymisé
+- [x] Porter le carrousel à sept extraits authentiques avec sept visuels professionnels distincts
