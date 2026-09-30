@@ -5,13 +5,12 @@ import {
   ArrowUp,
   Check,
   ChevronDown,
-  Clock3,
+  ChevronLeft,
+  ChevronRight,
   Globe2,
   MapPin,
   Menu,
   MessageCircle,
-  Plane,
-  ShieldCheck,
   Sparkles,
   X,
 } from "lucide-react";
@@ -212,9 +211,59 @@ function Field({ name, label, type = "text", required = false }: { name: string;
 }
 
 export function TrustStrip() {
-  return <div className="grid gap-px bg-border sm:grid-cols-3"><Trust icon={<Clock3 />} title="Réponse attentive" text="Chaque demande est étudiée personnellement." /><Trust icon={<ShieldCheck />} title="Interlocuteur dédié" text="Un seul contact du premier échange au retour." /><Trust icon={<Plane />} title="Expertise globale" text="Voyages privés et professionnels, partout." /></div>;
+  const announcements = [
+    { place: "Zanzibar", title: "Safari bleu privé", text: "Une journée entre lagons, bancs de sable et escales choisies, organisée selon votre séjour." },
+    { place: "Tanzanie", title: "Safari au lever du jour", text: "Une immersion privée dans la savane, pensée pour observer la faune aux premières lumières." },
+    { place: "Rome", title: "Rome à table", text: "Une expérience gastronomique confidentielle pour découvrir la ville par ses saveurs et ses adresses." },
+    { place: "Marrakech", title: "Médina confidentielle", text: "Une découverte guidée des savoir-faire, des ruelles et des lieux préservés de la ville rouge." },
+    { place: "Paris", title: "Dîner privé sur la Seine", text: "Une parenthèse élégante sur l’eau, à vivre seule ou à intégrer à une célébration Luxora." },
+  ];
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = announcements.length;
+  const showPrevious = () => setActive((current) => (current - 1 + total) % total);
+  const showNext = () => setActive((current) => (current + 1) % total);
+  useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(showNext, 7200);
+    return () => window.clearInterval(timer);
+  }, [paused, total]);
+  const announcement = announcements[active];
+  if (!announcement) return null;
+  return (
+    <section
+      className="announcement-strip"
+      aria-label="Annonces d’excursions Luxora"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}
+    >
+      <div className="announcement-inner">
+        <div className="announcement-heading">
+          <span className="announcement-kicker"><span aria-hidden="true" /> Annonces Luxora</span>
+          <p>Excursions & expériences</p>
+        </div>
+        <div className="announcement-copy" aria-live="polite" aria-atomic="true">
+          <div key={active} className="announcement-slide">
+            <p className="announcement-place">{announcement.place}</p>
+            <h2>{announcement.title}</h2>
+            <p className="announcement-text">{announcement.text}</p>
+          </div>
+        </div>
+        <div className="announcement-actions">
+          <div className="announcement-nav" aria-label="Navigation des annonces">
+            <Button variant="icon" className="announcement-arrow no-orbit" onClick={showPrevious} aria-label="Annonce précédente"><ChevronLeft className="h-4 w-4" /></Button>
+            <span aria-label={`Annonce ${active + 1} sur ${total}`}><strong>{String(active + 1).padStart(2, "0")}</strong> / {String(total).padStart(2, "0")}</span>
+            <Button variant="icon" className="announcement-arrow no-orbit" onClick={showNext} aria-label="Annonce suivante"><ChevronRight className="h-4 w-4" /></Button>
+          </div>
+          <Button asChild variant="outline" className="announcement-cta"><Link to="/experiences">En savoir plus <ArrowRight className="h-4 w-4" /></Link></Button>
+        </div>
+      </div>
+      <div className="announcement-progress" aria-hidden="true"><span key={active} /></div>
+    </section>
+  );
 }
-function Trust({ icon, title, text }: { icon: ReactNode; title: string; text: string }) { return <div className="bg-background p-8"><div className="text-primary [&>svg]:h-6 [&>svg]:w-6">{icon}</div><h3 className="mt-5 font-display text-2xl">{title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p></div>; }
 
 export function Faq() {
   const items = [

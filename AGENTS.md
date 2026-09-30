@@ -14,3 +14,4 @@
 - Travel stories live in a homepage editorial selector, using original carnet artwork and privacy-safe summaries rather than publishing personal itinerary PDFs.
 - Site-wide CTA motion is centralized in the shared Button variant, while major display headings use the reusable CascadeTitle component (rain-cascade letter fall) so accessibility and reduced-motion remain consistent.
 - Homepage customer feedback uses the reusable CircularTestimonials carousel with privacy-safe source material, preserving client anonymity and avoiding invented endorsements.
+- The homepage post-booking band is a rotating excursion announcement strip sourced from the existing experiences catalogue, avoiding unsupported prices or availability claims.
