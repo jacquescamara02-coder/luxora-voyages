@@ -9,6 +9,9 @@ import bespokeTravelImage from "@/assets/service-voyage-sur-mesure.jpg";
 import signatureImage from "@/assets/service-luxora-signature.jpg";
 import experiencesImage from "@/assets/service-experiences-couple.jpg.asset.json";
 import { TravelStories } from "@/components/travel-stories";
+import { CircularTestimonials, type Testimonial } from "@/components/ui/circular-testimonials";
+import dakarArtwork from "@/assets/carnet-dakar.webp.asset.json";
+import zanzibarArtwork from "@/assets/carnet-zanzibar.webp.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -28,6 +31,29 @@ export const Route = createFileRoute("/")({
 // IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   const serviceImages = [businessTravelImage, bespokeTravelImage, signatureImage, experiencesImage.url];
+  const testimonials: Testimonial[] = [
+    {
+      quote: "C’est plus qu’une agence de voyage : c’est un faiseur de rêve.",
+      name: "Une voyageuse Luxora",
+      designation: "Anniversaire surprise · Dakar",
+      src: dakarArtwork.url,
+      imageAlt: "Illustration du littoral de Dakar issue du carnet de voyage",
+    },
+    {
+      quote: "À l’aéroport, j’ai découvert une destination tenue secrète et un séjour entièrement préparé à mon insu.",
+      name: "Une voyageuse Luxora",
+      designation: "Souvenir confié à Luxora · Dakar",
+      src: zanzibarArtwork.url,
+      imageAlt: "Illustration d’un carnet de voyage Luxora",
+    },
+    {
+      quote: "Le lendemain, nous avons découvert ensemble la ville et l’île de Gorée. Un souvenir que je n’oublierai jamais.",
+      name: "Une voyageuse Luxora",
+      designation: "Voyage en famille · Dakar",
+      src: experiencesImage.url,
+      imageAlt: "Expérience en couple sur une eau turquoise",
+    },
+  ];
   return (
     <>
       <section className="home-hero">
@@ -60,6 +86,12 @@ function Index() {
       <TrustStrip />
       <section className="section"><Reveal><SectionHeading eyebrow="Notre savoir-faire" title="Un voyage ne se réserve pas. Il se compose." text="Nous réunissons logistique, intuition et sens du détail pour construire une expérience fluide, cohérente et profondément personnelle." /></Reveal><div className="mt-14 grid gap-5 md:grid-cols-2">{services.map((service, index) => <ServiceCard key={service.number} service={service} image={serviceImages[index]!} />)}</div></section>
       <TravelStories />
+      <section className="testimonial-section" aria-labelledby="reviews-title">
+        <div className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
+          <Reveal><p className="eyebrow text-primary">Avis client</p><CascadeTitle text="Le voyage continue dans leurs mots." className="mt-4 max-w-3xl font-display text-4xl leading-tight text-ivory sm:text-5xl lg:text-6xl" /><p className="mt-5 max-w-2xl leading-7 text-ivory/70">Un récit authentique confié à Luxora, présenté avec discrétion pour préserver l’intimité de la voyageuse.</p></Reveal>
+          <Reveal className="mt-14"><CircularTestimonials testimonials={testimonials} /></Reveal>
+        </div>
+      </section>
       <section className="story-band"><div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-24 lg:grid-cols-2 lg:px-8"><Reveal><p className="eyebrow text-primary">Luxora Signature</p><CascadeTitle text="Les plus beaux souvenirs commencent par une intention." className="mt-4 font-display text-5xl leading-none text-ivory lg:text-7xl" /><p className="mt-6 max-w-xl leading-7 text-ivory/68">Lune de miel, anniversaire, escapade romantique ou célébration privée : nous orchestrons chaque attention pour que l’émotion reste.</p><Button asChild variant="outline" className="mt-8"><Link to="/voyages">Créer mon voyage Signature</Link></Button></Reveal><Reveal className="destination-orbit"><div className="orbit-ring"><span>Zanzibar</span><span>Rome</span><span>Paris</span><span>Maroc</span></div><div className="orbit-core">L</div></Reveal></div></section>
       <section className="section"><Reveal><SectionHeading eyebrow="Questions fréquentes" title="Avant de partir" /></Reveal><Reveal className="mt-12"><Faq /></Reveal></section>
     </>
