@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import officialLogoAsset from "@/assets/luxora-logo-officiel.jpeg.asset.json";
-import headerLogoAsset from "@/assets/luxora-logo-header.jpeg.asset.json";
+import wordmarkPng from "@/assets/luxora-wordmark.png";
 import announcementZanzibar from "@/assets/announcement-zanzibar.jpg";
 import announcementTanzania from "@/assets/announcement-tanzania.jpg";
 import announcementRome from "@/assets/announcement-rome.jpg";
@@ -84,7 +84,14 @@ export const services = [
 export function Brand({ footer = false }: { footer?: boolean }) {
   return (
     <Link to="/" className={`brand-logo-link ${footer ? "brand-logo-footer" : "brand-logo-header"}`} aria-label="Luxora Voyages Anyele · Accueil">
-      <img src={footer ? officialLogoAsset.url : headerLogoAsset.url} alt="Luxora Voyages Anyele, votre assistante voyage sur mesure" className="brand-logo-image" />
+      {footer ? (
+        <img src={officialLogoAsset.url} alt="Luxora Voyages Anyele, votre assistante voyage sur mesure" className="brand-logo-image" loading="lazy" width={1360} height={720} />
+      ) : (
+        <span className="brand-logo-wordmark">
+          <img src={wordmarkPng} alt="Luxora Voyages Anyele" className="brand-logo-image" width={1762} height={150} />
+          <span className="brand-logo-tagline">Votre assistante voyage sur mesure</span>
+        </span>
+      )}
     </Link>
   );
 }
